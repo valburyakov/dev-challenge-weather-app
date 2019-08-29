@@ -1,0 +1,48 @@
+<mat-card class="example-card" *ngIf="currentWeather; else noCity">
+  <mat-card-header>
+    <mat-card-title>{{ currentWeather?.city }}, {{ currentWeather?.country }} </mat-card-title>
+    <mat-card-subtitle>{{ currentWeather?.date | date: 'EEE, d MMMM, hh:mm a' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout fxLayoutAlign="center">
+      <img mat-card-avatar class="weather-icon" [src]="currentWeather?.iconUrl" alt="icon">
+      <span class="mat-caption" fxLayout fxLayoutAlign="center center">{{ currentWeather?.description }}</span>
+    </div>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="32px">
+      <mat-card fxFlex="25%;" fxFlex.xs="50%" fxLayoutAlign="center">
+        <div class="param">Temperature</div>
+        <div class="value">{{ currentWeather?.temperature | number: '1.0-0' }} </div>
+        <div class="measure">
+          &deg;C
+        </div>
+      </mat-card>
+      <mat-card fxFlex="25%" fxFlex.xs="50%" fxLayoutAlign="center">
+        <div class="param">Humidity</div>
+        <div class="value">{{ currentWeather?.humidity }}</div>
+        <div class="measure">
+          %
+        </div>
+      </mat-card>
+      <mat-card fxFlex="25%;" fxFlex.xs="50%" fxLayoutAlign="center">
+        <div class="param">Pressure</div>
+        <div class="value">{{ currentWeather?.pressure | number: '1.0-0' }}</div>
+        <div class="measure">
+          hPa
+        </div>
+      </mat-card>
+      <mat-card fxFlex="25%;" fxFlex.xs="50%" fxLayoutAlign="center">
+        <div class="param">Wind</div>
+        <div class="value">{{ currentWeather?.windSpeed }}</div>
+        <div class="measure">
+          m/s
+          <br>
+          {{currentWeather?.windDirection}}
+        </div>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #noCity>
+  <div class="mat-subheading-2" style="text-align:center">No Weather</div>
+</ng-template>

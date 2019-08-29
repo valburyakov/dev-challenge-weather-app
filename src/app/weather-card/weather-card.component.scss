@@ -1,0 +1,37 @@
+.example-card {
+  max-width: 1380px;
+}
+
+.mat-caption {
+  font-size: 20px;
+}
+
+.weather-icon {
+  zoom: 150%;
+}
+
+.measure {
+  font-size: 10px;
+  line-height: 11px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  opacity: .7;
+  padding-top: 1px;
+}
+
+.value {
+  font-size: 24px;
+  line-height: 1;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0 2px;
+  margin-top: 3px;
+}
+
+.param {
+  font-size: 24px;
+  letter-spacing: .8px;
+  display: inline-block;
+  padding-right: 5px;
+}

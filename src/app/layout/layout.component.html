@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content class="content-wrapper">
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button>
+        <mat-icon aria-label="Side nav toggle icon">home</mat-icon>
+      </button>
+      <span>Weather App</span>
+      <span class="example-spacer"></span>
+      <mat-form-field>
+        <input matInput [formControl]="search" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="displayFn">
+          <mat-option *ngIf="optionsLoading$ | async" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+          <mat-option *ngFor="let city of filteredCities$ | async; trackBy: trackFn"  [value]="city">
+            <span>{{city.name}}</span> |
+            <small>{{city.country}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-icon-button class="example-button"
+              matTooltip="Click to get weather by city"
+              (click)="searchCity()">
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Search City">search</mat-icon>
+      </button>
+    </mat-toolbar>
+    <main class="content">
+      <ng-content></ng-content>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
